@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HKIIT DMT 數碼媒體科技高級文憑 | Booth Q&A 攤位快答</title>
+
+  <!-- Google Fonts: Inter & Noto Sans TC for crisp bilingual legibility -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '"Noto Sans TC"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              slate: '#F8FAFC',
+              navy: '#0F172A',
+              indigo: '#4F46E5',
+              cyan: '#0891B2',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Base typography & smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    }
+
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Highlighted strong text inside answers */
+    .answer-tc strong {
+      color: #3730A3; /* Deep Indigo */
+      font-weight: 700;
+      background: linear-gradient(180deg, transparent 62%, rgba(79, 70, 229, 0.12) 62%);
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+
+    .answer-en strong {
+      color: #0E7490; /* Deep Cyan */
+      font-weight: 700;
+    }
+
+    /* Card transitions & spotlight focus mode for tablet booth presentation */
+    .qa-card {
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.22s ease,
+                  opacity 0.2s ease;
+    }
+
+    .qa-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.08), 0 4px 10px -4px rgba(79, 70, 229, 0.06);
+    }
+
+    .qa-card.spotlight-active {
+      border-color: #4F46E5 !important;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.16), 0 20px 32px -12px rgba(15, 23, 42, 0.14) !important;
+      transform: scale(1.01);
+    }
+
+    /* Language visibility control via body data-lang attribute */
+    body[data-lang="tc"] .lang-en {
+      display: none !important;
+    }
+
+    body[data-lang="en"] .lang-tc {
+      display: none !important;
+    }
+
+    /* Adjust spacing when single-language mode is active */
+    body[data-lang="tc"] .en-divider,
+    body[data-lang="en"] .en-divider {
+      border-top: none !important;
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    /* Print Styles for clean A4 Booth Cheat Sheet */
+    @media print {
+      body {
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+        font-size: 11pt;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      header.sticky {
+        position: static !important;
+        box-shadow: none !important;
+        border-bottom: 2px solid #0F172A !important;
+        padding-bottom: 12px !important;
+      }
+
+      main {
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+      }
+
+      #qa-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+      }
+
+      .qa-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #CBD5E1 !important;
+        padding: 14px !important;
+        transform: none !important;
+      }
+
+      .demo-box {
+        background-color: #F1F5F9 !important;
+        border: 1px solid #94A3B8 !important;
+      }
+
+      footer {
+        break-inside: avoid;
+        border-top: 1.5px solid #CBD5E1 !important;
+        margin-top: 12px !important;
+        padding-top: 10px !important;
+      }
+    }
+  </style>
+</head>
+<body data-lang="bilingual" class="min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- =====================================================================
+       STICKY TOP CONTROL BAR (Header, Badges, Language Switch, Filters, Search)
+       ===================================================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+
+      <!-- Top Row: Title, Programme Codes & Language / Print Actions -->
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+
+        <!-- Programme Identity & Badges -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+          <div class="flex items-center gap-2.5">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-600 text-white font-extrabold text-sm tracking-tight shadow-sm shrink-0">
+              DMT
+            </span>
+            <div>
+              <h1 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">
+                <span class="lang-tc">HKIIT 數碼媒體科技高級文憑 (DMT)</span>
+                <span class="lang-en block text-xs sm:text-sm font-semibold text-slate-600">Higher Diploma in Digital Media Technology</span>
+              </h1>
+            </div>
+          </div>
+
+          <!-- Programme Code & QF Badges -->
+          <div class="flex flex-wrap items-center gap-1.5 sm:ml-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/80">
+              IT114214 (粵)
+            </span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-cyan-50 text-cyan-800 border border-cyan-200/80">
+              IT114214K (普)
+            </span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
+              QF Level 4
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Controls: 3-Way Language Switcher & Print Button -->
+        <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2.5 no-print">
+
+          <!-- 3-Way Segmented Language Switcher -->
+          <div role="group" aria-label="Language Switcher" class="inline-flex p-1 rounded-xl bg-slate-100 border border-slate-200/80">
+            <button
+              type="button"
+              data-lang-btn="bilingual"
+              onclick="setLanguageMode('bilingual')"
+              class="lang-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer bg-white text-indigo-700 shadow-sm"
+            >
+              中英雙語 Bilingual
+            </button>
+            <button
+              type="button"
+              data-lang-btn="tc"
+              onclick="setLanguageMode('tc')"
+              class="lang-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer text-slate-600 hover:text-slate-900"
+            >
+              繁體中文 TC
+            </button>
+            <button
+              type="button"
+              data-lang-btn="en"
+              onclick="setLanguageMode('en')"
+              class="lang-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer text-slate-600 hover:text-slate-900"
+            >
+              English EN
+            </button>
+          </div>
+
+          <!-- Print / Clean View Button -->
+          <button
+            type="button"
+            onclick="window.print()"
+            title="列印 A4 攤位速查表 / Print Clean A4 View"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs transition-colors cursor-pointer"
+          >
+            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z" />
+            </svg>
+            <span class="lang-tc">列印</span>
+            <span class="lang-en">Print</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Row: Audience Filter Tabs & Instant Keyword Search -->
+      <div class="mt-3 pt-3 border-t border-slate-100 flex flex-col md:flex-row md:items-center md:justify-between gap-3 no-print">
+
+        <!-- Audience Filter Tabs -->
+        <div role="tablist" aria-label="Audience Filter" class="flex items-center gap-1.5 overflow-x-auto pb-0.5">
+          <button
+            type="button"
+            data-filter="all"
+            onclick="setAudienceFilter('all')"
+            class="filter-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white shadow-xs transition-all cursor-pointer shrink-0"
+          >
+            <span class="lang-tc">全部問題</span>
+            <span class="lang-en">All</span>
+            <span class="px-1.5 py-0.2 rounded-md text-[11px] bg-white/20 text-white">6</span>
+          </button>
+
+          <button
+            type="button"
+            data-filter="student"
+            onclick="setAudienceFilter('student')"
+            class="filter-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200/70 transition-all cursor-pointer shrink-0"
+          >
+            <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+            <span class="lang-tc">給同學</span>
+            <span class="lang-en">For Students</span>
+            <span class="px-1.5 py-0.2 rounded-md text-[11px] bg-slate-200/80 text-slate-700">3</span>
+          </button>
+
+          <button
+            type="button"
+            data-filter="parent"
+            onclick="setAudienceFilter('parent')"
+            class="filter-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200/70 transition-all cursor-pointer shrink-0"
+          >
+            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+            <span class="lang-tc">給家長</span>
+            <span class="lang-en">For Parents</span>
+            <span class="px-1.5 py-0.2 rounded-md text-[11px] bg-slate-200/80 text-slate-700">3</span>
+          </button>
+        </div>
+
+        <!-- Quick Search Input & Tag Shortcuts -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 flex-1 md:max-w-md lg:max-w-lg">
+          <div class="relative flex-1">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              id="search-input"
+              type="text"
+              oninput="handleSearch(this.value)"
+              placeholder="搜尋關鍵字 Search (e.g. AI, VR, UWE, Portfolio, DSE)..."
+              class="w-full pl-10 pr-9 py-2 rounded-xl text-sm bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+            />
+            <button
+              id="clear-search-btn"
+              type="button"
+              onclick="clearSearch()"
+              aria-label="Clear search"
+              class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 text-xs font-bold flex items-center justify-center cursor-pointer"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN CONTENT AREA: Quick-Tag Strip & Responsive Q&A Cards Grid
+       ===================================================================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- Booth Helper Strip: Quick Topic Chips + Active Status -->
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-5 no-print">
+      <div class="flex flex-wrap items-center gap-1.5">
+        <span class="text-xs font-semibold text-slate-500 mr-1">
+          <span class="lang-tc">熱門關鍵字</span>
+          <span class="lang-en">Quick Tags:</span>
+        </span>
+        <button type="button" onclick="quickTag('AI')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 border border-slate-200 transition-colors cursor-pointer">
+          # Generative AI
+        </button>
+        <button type="button" onclick="quickTag('VR')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white hover:bg-cyan-50 text-slate-600 hover:text-cyan-700 border border-slate-200 transition-colors cursor-pointer">
+          # VR / AR
+        </button>
+        <button type="button" onclick="quickTag('UWE')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 border border-slate-200 transition-colors cursor-pointer">
+          # UWE 升學 Degree
+        </button>
+        <button type="button" onclick="quickTag('Portfolio')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 border border-slate-200 transition-colors cursor-pointer">
+          # Portfolio 面試
+        </button>
+        <button type="button" onclick="quickTag('DSE')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 border border-slate-200 transition-colors cursor-pointer">
+          # DSE / DFS 途徑
+        </button>
+      </div>
+
+      <div id="result-counter" class="text-xs font-semibold text-slate-500">
+        顯示 6 / 6 題 · Showing 6 of 6
+      </div>
+    </div>
+
+    <!-- Q&A Cards Container -->
+    <div id="qa-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+      <!-- Cards are dynamically rendered via JavaScript for clean state management -->
+    </div>
+
+    <!-- Empty Search State (Hidden by default) -->
+    <div id="empty-state" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-slate-200 shadow-xs">
+      <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 mb-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-bold text-slate-900">
+        <span class="lang-tc">找不到相符的問答項目</span>
+        <span class="lang-en block text-sm font-medium text-slate-500 mt-0.5">No matching Q&A items found</span>
+      </h3>
+      <button
+        type="button"
+        onclick="resetAllFilters()"
+        class="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition-colors cursor-pointer"
+      >
+        <span class="lang-tc">重設所有篩選</span>
+        <span class="lang-en">Reset Filters</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- =====================================================================
+       FOOTER QUICK REFERENCE: 4 Core Pillars & Student Showcase Link
+       ===================================================================== -->
+  <footer class="bg-white border-t border-slate-200 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+      <!-- 4-Pillar Programme Summary Strip -->
+      <div class="mb-5">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+          <span class="lang-tc">DMT 課程四大核心技術模組</span>
+          <span class="lang-en">4 Core Curriculum Pillars</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Pillar 01 -->
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-extrabold text-xs shrink-0">
+              01
+            </span>
+            <div>
+              <div class="text-sm font-bold text-slate-900 lang-tc">數碼媒體技術</div>
+              <div class="text-xs font-semibold text-slate-600 lang-en">Digital Media Tech</div>
+            </div>
+          </div>
+
+          <!-- Pillar 02 -->
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-cyan-100 text-cyan-800 font-extrabold text-xs shrink-0">
+              02
+            </span>
+            <div>
+              <div class="text-sm font-bold text-slate-900 lang-tc">生成式 AI</div>
+              <div class="text-xs font-semibold text-slate-600 lang-en">Generative AI</div>
+            </div>
+          </div>
+
+          <!-- Pillar 03 -->
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-extrabold text-xs shrink-0">
+              03
+            </span>
+            <div>
+              <div class="text-sm font-bold text-slate-900 lang-tc">互動與沉浸</div>
+              <div class="text-xs font-semibold text-slate-600 lang-en">VR/AR & Metaverse</div>
+            </div>
+          </div>
+
+          <!-- Pillar 04 -->
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-cyan-100 text-cyan-800 font-extrabold text-xs shrink-0">
+              04
+            </span>
+            <div>
+              <div class="text-sm font-bold text-slate-900 lang-tc">直播與廣播</div>
+              <div class="text-xs font-semibold text-slate-600 lang-en">Live & Esports Broadcasting</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar: Student Showcase CTA Link & Campus Info -->
+      <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="text-xs text-slate-500">
+          <span class="font-bold text-slate-700">HKIIT (Sha Tin) Metaverse Innovation Centre</span> ·
+          <span class="lang-tc">香港資訊科技學院（沙田）元宇宙創新中心</span>
+          <span class="lang-en">Booth Quick Reference Guide</span>
+        </div>
+
+        <a
+          href="https://www.metaverseinnovationcentre.com/course.html?lang=zh-Hant"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="no-print inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 shadow-sm transition-all"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          <span class="lang-tc">瀏覽學生作品網頁</span>
+          <span class="lang-en">View Student Showcase</span>
+          <svg class="w-3.5 h-3.5 opacity-85" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Subtle Copy Confirmation Toast (Replaces alert() safely) -->
+  <div
+    id="copy-toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 translate-y-2 transition-all duration-200 bg-slate-900 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-lg flex items-center gap-2"
+  >
+    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+    <span id="copy-toast-text">已複製問答內容 / Copied to clipboard</span>
+  </div>
+
+  <!-- =====================================================================
+       APPLICATION LOGIC (Data Store, Rendering, Filtering, Copy, Spotlight)
+       ===================================================================== -->
+  <script>
+    // Structured Bilingual Q&A Dataset (Q1–Q6)
+    const qaData = [
+      {
+        id: 'Q1',
+        audience: 'student',
+        audienceLabelTC: '給同學的快答',
+        audienceLabelEN: 'For Students',
+        qTC: '我無畫畫或寫 Code 底子，讀唔讀得掂？',
+        qEN: 'I have no background in drawing or coding. Can I handle this programme?',
+        aTC: '<strong>完全無問題！</strong> 課程由零開始教起，唔要求你有美術或編程底子。而且而家有 <strong>生成式 AI（Generative AI）</strong> 輔助創作，重點係你有創意同肯試新科技，技術方面我哋會一步步帶你上手。',
+        aEN: '<strong>Not a problem at all!</strong> The curriculum starts from the basics and requires no prior art or coding experience. With <strong>Generative AI</strong> assisting the creative process, what matters most is your creativity and willingness to explore new tech—we will guide you step by step on the technical skills.',
+        demoTC: '現場佐證：展示《元宇宙中的外星藝術：生成式風格轉移》，說明如何用 AI 工具將構思變成視覺作品。',
+        demoEN: 'Live Demo Reference: Showcase "Alien Art in the Metaverse: Generative Style Transfer" to demonstrate how AI tools turn ideas into visual artworks.'
+      },
+      {
+        id: 'Q2',
+        audience: 'student',
+        audienceLabelTC: '給同學的快答',
+        audienceLabelEN: 'For Students',
+        qTC: 'DMT 同一般平面設計（Design）或純 IT 課程有咩分別？',
+        qEN: 'How is DMT different from traditional Graphic Design or pure IT programmes?',
+        aTC: '我哋係<strong>「創意 ＋ 前沿科技」</strong>的跨界課程。唔止學拍片剪輯，仲會玩齊 <strong>生成式 AI、VR/AR 沉浸式體驗、3D 建模</strong> 同 <strong>電競／大型活動直播</strong>，畢業時你唔只係設計師，而係識用最新科技做互動體驗的數碼媒體專才。',
+        aEN: 'We offer an interdisciplinary <strong>"Creativity + Frontier Tech"</strong> curriculum. Beyond video production and editing, you will master <strong>Generative AI, VR/AR immersive experiences, 3D modeling,</strong> and <strong>esports/live event broadcasting</strong>. You graduate not just as a designer, but as a digital media specialist who builds interactive experiences with cutting-edge tech.',
+        demoTC: '現場佐證：展示《相對論 VR》或《秦皇遺藏：VR 兵馬俑博物館》，強調「可以走入去互動」而非只看平面圖。',
+        demoEN: 'Live Demo Reference: Showcase "Relativity VR" or "VR Terracotta Warriors Museum", highlighting interactive spatial immersion rather than flat 2D visuals.'
+      },
+      {
+        id: 'Q3',
+        audience: 'student',
+        audienceLabelTC: '給同學的快答',
+        audienceLabelEN: 'For Students',
+        qTC: '平時上堂係咪淨係對住電腦聽書？有冇得落手玩器材？',
+        qEN: 'Are classes just sitting in front of computers listening to lectures, or do we get hands-on equipment practice?',
+        aTC: '<strong>極多實戰同器材操作！</strong> 學院配備專業攝影棚、VR 頭顯、高階工作站同直播推流設備。同學喺學期間已經會接真實項目（Real Projects），例如幫大型企業做互動平台、幫文化活動做數碼保育。',
+        aEN: '<strong>Heavily hands-on with professional gear!</strong> Our campus is equipped with professional studios, VR headsets, high-end workstations, and live broadcasting systems. Students work on real-world industry projects during their studies—such as building interactive recruitment platforms for major corporations and digital preservation for cultural events.',
+        demoTC: '現場佐證：展示《國泰招募體驗平台》及《大坑火龍舞－數位保存與推廣》。',
+        demoEN: 'Live Demo Reference: Showcase "Cathay Recruitment Experience Platform" and "Tai Hang Fire Dragon Dance – Digital Preservation & Promotion".'
+      },
+      {
+        id: 'Q4',
+        audience: 'parent',
+        audienceLabelTC: '給家長的快答',
+        audienceLabelEN: 'For Parents',
+        qTC: '讀完 DMT 出路點？升唔升到大學學位（Degree）？',
+        qEN: 'What are the career prospects after graduating from DMT? Can students articulate to a university degree?',
+        aTC: '<strong>升學就業雙軌並行。</strong> 畢業獲資歷架構第 4 級（QF Level 4），可直接銜接 <strong>1 年制榮譽學士學位（Top-up Degree）</strong>（例如英國西英格蘭大學 UWE Bristol 數碼媒體理學士）或本地大學相關學位；直接就業亦可投身 AI 媒體設計、VR/AR 開發、UI/UX 設計及活動直播製作等高需求行業。',
+        aEN: '<strong>Dual pathways in further studies and employment.</strong> Graduates attain <strong>QF Level 4</strong> and can directly articulate to a <strong>1-year Top-up Honours Degree</strong>—such as the <em>BSc (Hons) Digital Media</em> offered by the University of the West of England (UWE Bristol)—or related local university degrees. Those entering the workforce can pursue high-demand roles in AI media design, VR/AR development, UI/UX design, and live event/esports broadcasting.',
+        demoTC: '',
+        demoEN: ''
+      },
+      {
+        id: 'Q5',
+        audience: 'parent',
+        audienceLabelTC: '給家長的快答',
+        audienceLabelEN: 'For Parents',
+        qTC: '面試需唔需要交作品集（Portfolio）？點樣準備？',
+        qEN: 'Is a portfolio required for the admission interview? How should applicants prepare?',
+        aTC: '<strong>唔係強制必須，但有就更加分！</strong> 就算無正式設計作品，平時自己剪過嘅短片、影過嘅相、整過嘅 AI 圖或者遊戲創作都可以帶嚟分享；最緊要係面試時展現你對數碼媒體同新科技嘅熱誠。',
+        aEN: '<strong>Not mandatory, but definitely a bonus!</strong> Even without formal design training, applicants are welcome to share personal short videos, photography, AI-generated artwork, or simple game prototypes. Most importantly, show your passion and curiosity for digital media and emerging technologies during the interview.',
+        demoTC: '',
+        demoEN: ''
+      },
+      {
+        id: 'Q6',
+        audience: 'parent',
+        audienceLabelTC: '給家長的快答',
+        audienceLabelEN: 'For Parents',
+        qTC: '萬一 DSE 成績未夠分直接入高級文憑（HD），有冇其他途徑？',
+        qEN: 'What if DSE results do not meet the direct entry requirements for the Higher Diploma (HD)? Are there alternative pathways?',
+        aTC: '可以先報讀資歷架構第 3 級的 <strong>基礎課程文憑（DFS — 數碼媒體學 FS113002S 或 資訊科技 FS113002N）</strong>，完成 1 年課程達標後即可無縫升讀 DMT 高級文憑。',
+        aEN: 'Students can start with the <strong>QF Level 3 Diploma of Foundation Studies (DFS)</strong> in <em>Digital Media Studies (FS113002S)</em> or <em>Information Technology (FS113002N)</em>. Upon completing the 1-year programme and meeting progression requirements, students can seamlessly articulate into the HD in DMT.',
+        demoTC: '',
+        demoEN: ''
+      }
+    ];
+
+    // Application State
+    let currentLang = 'bilingual';
+    let currentAudience = 'all';
+    let currentSearch = '';
+    let spotlightId = null;
+
+    /**
+     * Strip HTML tags to create searchable plain text
+     */
+    function stripHtml(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    /**
+     * Render Q&A cards based on active audience filter & search keyword
+     */
+    function renderCards() {
+      const grid = document.getElementById('qa-grid');
+      const emptyState = document.getElementById('empty-state');
+      const counter = document.getElementById('result-counter');
+
+      const query = currentSearch.trim().toLowerCase();
+
+      const filtered = qaData.filter((item) => {
+        // Filter by audience
+        if (currentAudience !== 'all' && item.audience !== currentAudience) {
+          return false;
+        }
+
+        // Filter by keyword across TC & EN fields
+        if (query) {
+          const searchableText = [
+            item.id,
+            item.audienceLabelTC,
+            item.audienceLabelEN,
+            item.qTC,
+            item.qEN,
+            stripHtml(item.aTC),
+            stripHtml(item.aEN),
+            item.demoTC,
+            item.demoEN
+          ].join(' ').toLowerCase();
+
+          return searchableText.includes(query);
+        }
+
+        return true;
+      });
+
+      // Update result counter
+      counter.innerHTML = `
+        <span class="lang-tc">顯示 ${filtered.length} / ${qaData.length} 題</span>
+        <span class="lang-en">Showing ${filtered.length} of ${qaData.length}</span>
+      `;
+
+      // Toggle empty state
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      // Build cards HTML
+      grid.innerHTML = filtered.map((item) => {
+        const isStudent = item.audience === 'student';
+        const isSpotlight = spotlightId === item.id;
+
+        const qBadgeStyle = isStudent
+          ? 'bg-gradient-to-br from-cyan-600 to-indigo-600 text-white'
+          : 'bg-gradient-to-br from-indigo-600 to-slate-800 text-white';
+
+        const audienceBadgeStyle = isStudent
+          ? 'bg-cyan-50 text-cyan-800 border-cyan-200/80'
+          : 'bg-indigo-50 text-indigo-800 border-indigo-200/80';
+
+        const hasDemo = Boolean(item.demoTC || item.demoEN);
+
+        return `
+          <article
+            id="card-${item.id}"
+            class="qa-card bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs flex flex-col justify-between ${isSpotlight ? 'spotlight-active' : ''}"
+          >
+            <div>
+              <!-- Card Top Header: Q-Badge, Audience Tag & Quick Booth Actions -->
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="flex items-center gap-2.5">
+                  <span class="inline-flex items-center justify-center px-3 py-1 rounded-xl text-sm font-extrabold tracking-wide shadow-xs ${qBadgeStyle}">
+                    ${item.id}
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${audienceBadgeStyle}">
+                    <span class="w-1.5 h-1.5 rounded-full ${isStudent ? 'bg-cyan-500' : 'bg-indigo-500'}"></span>
+                    <span class="lang-tc">${item.audienceLabelTC}</span>
+                    <span class="lang-en">${item.audienceLabelEN}</span>
+                  </span>
+                </div>
+
+                <!-- Booth Ambassador Action Buttons: Spotlight & Copy -->
+                <div class="flex items-center gap-1.5 no-print">
+                  <button
+                    type="button"
+                    onclick="toggleSpotlight('${item.id}')"
+                    title="重點標示此卡片（方便向參觀者展示） / Spotlight Card"
+                    class="p-2 rounded-xl text-xs font-semibold border transition-colors cursor-pointer ${
+                      isSpotlight
+                        ? 'bg-indigo-600 text-white border-indigo-600'
+                        : 'bg-slate-50 hover:bg-indigo-50 text-slate-500 hover:text-indigo-700 border-slate-200/80'
+                    }"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="copyCardText('${item.id}')"
+                    title="複製問答內容 / Copy Q&A"
+                    class="p-2 rounded-xl text-xs font-semibold bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800 border border-slate-200/80 transition-colors cursor-pointer"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Bilingual Question Block -->
+              <div class="mb-4">
+                <h2 class="lang-tc text-lg sm:text-xl font-extrabold text-slate-900 leading-snug tracking-tight">
+                  ${item.qTC}
+                </h2>
+                <p class="lang-en text-[15px] sm:text-base font-bold text-indigo-950/85 leading-snug mt-1.5">
+                  ${item.qEN}
+                </p>
+              </div>
+
+              <!-- Divider -->
+              <div class="h-px bg-slate-100 my-3.5"></div>
+
+              <!-- Bilingual Concise Answer Block -->
+              <div class="space-y-3">
+                <p class="lang-tc answer-tc text-[15px] sm:text-base text-slate-700 leading-relaxed">
+                  ${item.aTC}
+                </p>
+                <p class="lang-en en-divider answer-en text-sm sm:text-[15px] text-slate-600 leading-relaxed pt-3 border-t border-dashed border-slate-200/90">
+                  ${item.aEN}
+                </p>
+              </div>
+            </div>
+
+            <!-- Live Demo Reference Callout Box (Q1–Q3) -->
+            ${
+              hasDemo
+                ? `
+              <div class="demo-box mt-5 rounded-xl bg-gradient-to-r from-cyan-50/90 via-sky-50/70 to-indigo-50/70 border border-cyan-200/80 p-3.5 sm:p-4">
+                <div class="flex items-start gap-2.5">
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-cyan-600 text-white shrink-0 mt-0.5 shadow-2xs">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </span>
+                  <div class="text-xs sm:text-[13px] leading-relaxed">
+                    <p class="lang-tc font-bold text-cyan-950">
+                      ${item.demoTC}
+                    </p>
+                    <p class="lang-en font-medium text-cyan-900/90 mt-1">
+                      ${item.demoEN}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            `
+                : ''
+            }
+          </article>
+        `;
+      }).join('');
+    }
+
+    /**
+     * Switch between 'bilingual', 'tc', and 'en' display modes
+     */
+    function setLanguageMode(mode) {
+      currentLang = mode;
+      document.body.setAttribute('data-lang', mode);
+
+      // Update segmented button active styling
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const isActive = btn.getAttribute('data-lang-btn') === mode;
+        if (isActive) {
+          btn.className = 'lang-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer bg-white text-indigo-700 shadow-sm';
+        } else {
+          btn.className = 'lang-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer text-slate-600 hover:text-slate-900';
+        }
+      });
+
+      // Re-render counter text
+      renderCards();
+    }
+
+    /**
+     * Filter cards by audience ('all', 'student', 'parent')
+     */
+    function setAudienceFilter(audience) {
+      currentAudience = audience;
+
+      document.querySelectorAll('.filter-btn').forEach((btn) => {
+        const isActive = btn.getAttribute('data-filter') === audience;
+        const countBadge = btn.querySelector('span:last-child');
+        if (isActive) {
+          btn.className = 'filter-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white shadow-xs transition-all cursor-pointer shrink-0';
+          if (countBadge) {
+            countBadge.className = 'px-1.5 py-0.2 rounded-md text-[11px] bg-white/20 text-white';
+          }
+        } else {
+          btn.className = 'filter-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200/70 transition-all cursor-pointer shrink-0';
+          if (countBadge) {
+            countBadge.className = 'px-1.5 py-0.2 rounded-md text-[11px] bg-slate-200/80 text-slate-700';
+          }
+        }
+      });
+
+      renderCards();
+    }
+
+    /**
+     * Handle instant keyword search input
+     */
+    function handleSearch(value) {
+      currentSearch = value;
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (value.trim().length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderCards();
+    }
+
+    /**
+     * Quick-tap keyword chip helper
+     */
+    function quickTag(keyword) {
+      const input = document.getElementById('search-input');
+      if (input.value.toLowerCase() === keyword.toLowerCase()) {
+        clearSearch();
+      } else {
+        input.value = keyword;
+        handleSearch(keyword);
+      }
+    }
+
+    /**
+     * Clear search input
+     */
+    function clearSearch() {
+      const input = document.getElementById('search-input');
+      input.value = '';
+      handleSearch('');
+    }
+
+    /**
+     * Reset all filters and search
+     */
+    function resetAllFilters() {
+      spotlightId = null;
+      setAudienceFilter('all');
+      clearSearch();
+    }
+
+    /**
+     * Toggle visual spotlight on a card when showing tablet/laptop to a booth visitor
+     */
+    function toggleSpotlight(id) {
+      spotlightId = spotlightId === id ? null : id;
+      renderCards();
+    }
+
+    /**
+     * Copy formatted Q&A text to clipboard using execCommand fallback (iframe safe)
+     */
+    function copyCardText(id) {
+      const item = qaData.find((q) => q.id === id);
+      if (!item) return;
+
+      const lines = [
+        `[${item.id}] ${item.qTC}`,
+        `${item.qEN}`,
+        ``,
+        `答：${stripHtml(item.aTC)}`,
+        `A: ${stripHtml(item.aEN)}`
+      ];
+
+      if (item.demoTC) {
+        lines.push(``, item.demoTC, item.demoEN);
+      }
+
+      const textToCopy = lines.join('\n');
+
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        showToast(`${item.id} 已複製到剪貼簿 · Copied`);
+      } catch (err) {
+        showToast('無法複製內容 · Copy failed');
+      }
+    }
+
+    /**
+     * Display non-blocking toast notification
+     */
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('copy-toast');
+      const toastText = document.getElementById('copy-toast-text');
+      toastText.textContent = message;
+
+      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-2');
+      }, 2200);
+    }
+
+    // Initialize page on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCards();
+    });
+  </script>
+</body>
+</html>
